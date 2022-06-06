@@ -1,0 +1,14 @@
+/*
+========================================================
+*Title: wolff-palindrome.css
+*Author: Patrick Wolff
+*Date: 05 June 2022
+*Description: CSS Styling for the palindrome assignment.
+========================================================
+*/
+
+/** Styling results */
+#palindrome-results {
+    text-align: center;
+    font-size: 28px;
+}
