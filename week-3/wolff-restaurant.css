@@ -1,0 +1,19 @@
+/*
+* Title: wolff-restaurant.css
+* Author: Patrick Wolff
+* Date: 12 June 2022
+* Description: Styling for wolff-restaurant.html
+*/
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 3% auto 0;
+    width: 260px;
+    display: inline;
+  }
+  
