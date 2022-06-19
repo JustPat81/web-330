@@ -1,0 +1,14 @@
+/*
+* Title: calorie.css
+* Author: Patrick Wolff
+* Date: 19 June 2022
+* Description: Styling for wolff-calorie.html
+*/
+
+/* Styling for the food list div. */
+#foodList {
+    float: right;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}

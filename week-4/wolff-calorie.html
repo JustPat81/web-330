@@ -1,0 +1,121 @@
+<!--
+! Title: wolff-calorie.html
+! Author: Patrick
+! Date: 19 June 2022
+! Description: Working with lambda expressions and static props.
+! Sources: https://www.w3schools.com/jsref/event_onkeyup.asp
+! https://stackoverflow.com/questions/302122/jquery-event-keypress-which-key-was-pressed
+-->
+<!DOCTYPE html>
+    <html lang='en'>
+      <head>
+         <meta charset="UTF-8">
+         <link rel="preconnect" href="https://fonts.gstatic.com">
+         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+         <link rel="stylesheet" href="../theme.css" type="text/css">
+         <link rel="stylesheet" href="../site.css" type="text/css">
+         <link rel="stylesheet" href="wolff-calorie.css" type="text/css">
+         <title>WEB 231 – Enterprise JavaScript I</title>
+      </head>
+
+      <body class="light-theme">
+         <div id="container">
+         <div class="app-header">Welcome to the Calorie App!</div>
+         <div class="card">
+            <div class="card-title">Calorie Search Form</div>
+            <div class="card-content">
+               <div class="form">
+                  <div class="form-field">
+                     <label>Enter a food item:</label>
+                     <input type="text" id="txtFoodItem" class="input">
+                     <span id = "foodList"></span>             
+                  </div>
+                  <div class="form-field">
+                     <button id="btnSearch" class="btn btn-primary full-width" onclick="">Search</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Link to return back to the index.html page. -->
+         <a class="return-home" href="../index.html">Return</a>
+         
+         <!--Card to display results-->
+         <div id="results-container">
+            <div class="card">
+               <div class="card-title">Search Results</div>
+               <div class="card-content" id="assign-results-header">
+                  <table>
+                     <!-- Begin myTable-->
+                  <thead>
+                     <th>Name</th>
+                     <th>Calories</th>
+                  </thead>
+                  <tbody id="myTable">
+                  </tbody>
+                  <!--End of myTable-->
+               </div>
+               <br>
+            </div>
+         </div>
+         
+<script type="javascript" src="../theme.js"></script>
+
+<script type="module">
+   
+import {
+    CalorieConverter
+} from "./calorie-converter.js";
+
+//Creating variable and assigning it the txtFoodItem input field.
+let txtFoodItemEl = document.getElementById('txtFoodItem');
+
+document.getElementById("btnSearch").onclick = function() {
+
+    //Assigning the variable the input value.
+    let txtFoodItem = txtFoodItemEl.value;
+    let foods = CalorieConverter.find(txtFoodItem);
+    let tableData = "";
+
+    //Loop over foods and populates an HTML table
+    for (let food of foods) {
+        let tblRow = `
+            <tr>
+                <td> ${food.name} </td>
+                <td> ${food.calories} </td>
+            </tr>`
+        tableData += tblRow;
+    }
+    tableData += "</tbody></table>";
+    document.getElementById("myTable").innerHTML = tableData;
+}
+
+//An event listener for keyup.
+document.addEventListener("keyup", function(event) {
+
+    //If the user presses the enter key
+    if (event.keyCode == 13) {
+
+    //Simulate clicking the search button.
+    document.getElementById("btnSearch").click();
+    }
+});
+
+//Creating variable foodList and calling static data field.
+let foodList = CalorieConverter.data;
+
+//Building an HTML <i> string.
+let foodListData = "<i>(Ex: ";
+
+for (const food of foodList) {
+    //Appending food names to variable string.
+    foodListData += `${food.name}, `;
+}
+
+foodListData = `${foodListData.slice(0,-2)})</i>`;
+
+document.getElementById("foodList").innerHTML = foodListData;
+</script>
+</body>
+
+</html>
