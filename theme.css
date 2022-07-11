@@ -150,3 +150,37 @@ i {
 	margin-top: 1.2em;
 	margin-right: 110px
 }
+
+.table th {
+    border: 1px solid #ddd;
+    padding-top: 12px;
+	padding-left: 6px;
+    padding-bottom: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: var(--table-header-background-color);
+    text-align: left;
+    color: var(--table-header-color);
+}
+
+.table td,
+th {
+	border: 1px solid #ddd;
+	border-color: var(--table-border-color);
+	padding: 8px;
+}
+
+.table tr:hover {
+	
+	background-color: var( --table-hover-background-color);
+	color: var(--table-hover-color);
+	cursor: pointer;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+
+	margin-bottom: 30px;
+}
